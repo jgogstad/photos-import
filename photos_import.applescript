@@ -1,4 +1,4 @@
-on hazelMatchFile(theFile, inputAttributes)
+on hazelProcessFile(theFile, inputAttributes)
 	tell application "Finder"
 		set albumContainer to theFile
 		set yearContainer to container of albumContainer
@@ -36,4 +36,4 @@ on hazelMatchFile(theFile, inputAttributes)
 	set text item delimiters to " "
 	do shell script "/usr/local/bin/exiftool -overwrite_original -Keywords+=Processed " & posixPaths as text
 	set text item delimiters to tid
-end hazelMatchFile
+end hazelProcessFile

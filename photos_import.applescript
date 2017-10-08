@@ -29,7 +29,16 @@ on hazelProcessFile(theFile, inputAttributes)
 			set end of imageList to f as alias
 		end repeat
 		
-		import imageList into targetAlbum skip check duplicates no
+		set imported to import imageList into targetAlbum skip check duplicates no
+		repeat with i in imported
+			set kws to the keywords of i
+			if kws is missing value or kws is {} then
+				set kws to {"Processed"}
+			else
+				set end of kws to "Processed"
+			end if
+			set keywords of i to kws
+		end repeat
 	end tell
 	
 	set tid to text item delimiters
